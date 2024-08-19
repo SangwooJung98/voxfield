@@ -73,7 +73,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.10000000149011612
+      Size (m): 0.25
       Style: Flat Squares
       Topic: /voxblox_node/esdf_slice
       Unreliable: false
@@ -103,7 +103,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.10000000149011612
+      Size (m): 0.25
       Style: Flat Squares
       Topic: /voxblox_node/tsdf_slice
       Unreliable: false
@@ -133,7 +133,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.10000000149011612
+      Size (m): 0.25
       Style: Flat Squares
       Topic: /voxblox_node/gsdf_slice
       Unreliable: false

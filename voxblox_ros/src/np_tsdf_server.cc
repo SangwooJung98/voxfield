@@ -281,10 +281,12 @@ void NpTsdfServer::processPointCloudMessageAndInsert(
   Pointcloud points_C;
   Pointcloud normals_C;
   Colors colors;
+  Colors intensity;
   Labels labels;
 
   // Convert differently depending on RGB or I type.
   if (has_label) {
+    // std::cout << "has label" << std::endl;
     pcl::PointCloud<pcl::PointXYZRGBL>::Ptr pointcloud_pcl(
         new pcl::PointCloud<pcl::PointXYZRGBL>());
     // pointcloud_pcl is modified below:
@@ -293,16 +295,19 @@ void NpTsdfServer::processPointCloudMessageAndInsert(
         *pointcloud_pcl, color_map_, &points_C, &colors, &labels, true);
     pointcloud_pcl.reset(new pcl::PointCloud<pcl::PointXYZRGBL>());
   } else if (color_pointcloud) {
+    // std::cout << "color point cloud" << std::endl;
     pcl::PointCloud<pcl::PointXYZRGB> pointcloud_pcl;
     // pointcloud_pcl is modified below:
     pcl::fromROSMsg(*pointcloud_msg, pointcloud_pcl);
     convertPointcloud(pointcloud_pcl, color_map_, &points_C, &colors);
   } else if (has_intensity) {
+    // std::cout << "has intensity" << std::endl;
     pcl::PointCloud<pcl::PointXYZI> pointcloud_pcl;
     // pointcloud_pcl is modified below:
     pcl::fromROSMsg(*pointcloud_msg, pointcloud_pcl);
     convertPointcloud(pointcloud_pcl, color_map_, &points_C, &colors);
   } else {
+    // std::cout << "no intensity" << std::endl;
     pcl::PointCloud<pcl::PointXYZ> pointcloud_pcl;
     // pointcloud_pcl is modified below:
     pcl::fromROSMsg(*pointcloud_msg, pointcloud_pcl);

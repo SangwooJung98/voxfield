@@ -338,6 +338,10 @@ void NpTsdfIntegratorBase::updateTsdfVoxel(
   bool with_init_weight = false;
   if (init_weight > 0)
     with_init_weight = true;
+
+  float intensity = (float(color.r)) / 255.0f;
+  // std::cout << "intensity: " << intensity << std::endl;
+
   float weight =
       computeVoxelWeight(point_C, sdf, with_init_weight, init_weight);
   // it is possible to have weights very close to zero, due to the limited
